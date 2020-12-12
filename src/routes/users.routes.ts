@@ -20,9 +20,13 @@ usersRouter.post('/', async (request, response) => {
         password,
     });
 
-    delete user.password;
-
-    return response.json(user);
+    return response.json({
+        name: user.name,
+        email: user.email,
+        id: user.id,
+        created_at: user.created_at,
+        updated_at: user.updated_at,
+    });
 });
 
 usersRouter.patch(
@@ -37,9 +41,13 @@ usersRouter.patch(
             avatarFilename: request.file.filename,
         });
 
-        delete user.password;
-
-        return response.json(user);
+        return response.json({
+            name: user.name,
+            email: user.email,
+            id: user.id,
+            created_at: user.created_at,
+            updated_at: user.updated_at,
+        });
     },
 );
 

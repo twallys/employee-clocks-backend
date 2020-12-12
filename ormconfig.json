@@ -1,17 +1,17 @@
 {
     "type": "postgres",
-    "host": "raja.db.elephantsql.com",
-    "port": 5432,
-    "username": "avvnnspl",
-    "password": "sx-rWtCCAdPYVIUvI34AZ4iyFaCsMQnM",
-    "database": "avvnnspl",
+    "host": "134.209.119.206",
+    "port": 5433,
+    "username": "postgres",
+    "password": "postgres",
+    "database": "employee-clocks",
     "entities": [
-        "./src/models/*.ts"
+        "./dist/models/*.js"
     ],
     "migrations": [
-		"./src/database/migrations/*.ts"
+		"./dist/database/migrations/*.js"
 	],
 	"cli": {
-		"migrationsDir": "./src/database/migrations"
+		"migrationsDir": "./dist/database/migrations"
 	}
 }

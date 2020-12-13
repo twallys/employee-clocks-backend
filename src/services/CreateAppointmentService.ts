@@ -2,7 +2,7 @@
 import { startOfHour } from 'date-fns';
 import { getCustomRepository } from 'typeorm';
 
-import AppError from '../errors/AppError';
+// import AppError from '../errors/AppError';
 
 import Appointment from '../models/Appointment';
 import AppointmentsRepository from '../repositories/AppointmentsRepository';
@@ -25,13 +25,13 @@ class CreateAppointmentService {
 
         const appointmentDate = startOfHour(date);
 
-        const findAppointmentInSameDate = await appointmentsRepository.findByDate(
-            appointmentDate,
-        );
+        // const findAppointmentInSameDate = await appointmentsRepository.findByDate(
+        //     appointmentDate,
+        // );
 
-        if (findAppointmentInSameDate) {
-            throw new AppError('This appointment is already booked.');
-        }
+        // if (findAppointmentInSameDate) {
+        //     throw new AppError('This appointment is already booked.');
+        // }
 
         // ESTE METODO VAI CRIAR UMA INSTANCIA, AINDA NÃO IRÁ SALVAR NO BANCO
         const appointment = appointmentsRepository.create({

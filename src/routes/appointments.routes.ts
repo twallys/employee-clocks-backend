@@ -21,16 +21,6 @@ appointmentsRouter.get('/', async (request, response) => {
     return response.json(appointments);
 });
 
-appointmentsRouter.get('/byprovider/:providerid', async (request, response) => {
-    const { provider_id } = request.params;
-    const appointmentsRepository = getCustomRepository(AppointmentsRepository);
-    const appointments = await appointmentsRepository.find({
-        where: provider_id,
-    });
-
-    return response.json(appointments);
-});
-
 appointmentsRouter.get('/:id', async (request, response) => {
     const { id } = request.params;
     const appointmentsRepository = getCustomRepository(AppointmentsRepository);

@@ -2,8 +2,6 @@
 
 var _express = _interopRequireDefault(require("express"));
 
-var _cors = _interopRequireDefault(require("cors"));
-
 require("express-async-errors");
 
 var _routes = _interopRequireDefault(require("./routes"));
@@ -16,9 +14,19 @@ require("./database");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-const app = (0, _express.default)();
-app.use((0, _cors.default)());
-app.use(_express.default.json());
+// import cors from 'cors';
+const app = (0, _express.default)(); // app.use(cors());
+
+app.use(_express.default.json()); // Enable CORS
+
+app.use(function (req, res, next) {
+  res.header('Access-Control-Allow-Origin', req.headers.origin);
+  res.header('Access-Control-Allow-Headers', 'x-requested-with, content-type');
+  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+  res.header('Access-Control-Allow-Credentials', 'true');
+  res.header('Access-Control-Max-Age', '1000000000');
+  next();
+});
 app.use('/files', _express.default.static(_upload.default.directory));
 app.use(_routes.default); // USADO PARA TRATAR OS ERROS, DEVE ESTAR DEPOIS DAS ROTAS
 // PARA FUNCIONAR EXIGE O PACOTE EXPRESS-ASYNC-ERRORS

@@ -24,8 +24,12 @@ app.use(function (req, res, next) {
     res.header('Access-Control-Allow-Credentials', 'true');
     res.header('Access-Control-Max-Age', '1000000000');
 
-    // intercept OPTIONS method if ('OPTIONS' == req.method) { res.send(200); } else { next(); } });
-    next();
+    // intercept OPTIONS method
+    if (req.method === 'OPTIONS') {
+        res.send(200);
+    } else {
+        next();
+    }
 });
 
 app.use('/files', express.static(uploadConfig.directory));

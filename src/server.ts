@@ -1,5 +1,5 @@
 import express, { Request, Response, NextFunction } from 'express';
-import cors from 'cors';
+// import cors from 'cors';
 import 'express-async-errors';
 import routes from './routes';
 import uploadConfig from './config/upload';
@@ -11,11 +11,11 @@ const app = express();
 
 app.use(express.json());
 
-app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', '*');
-    app.use(cors());
-    next();
-});
+// app.use((req, res, next) => {
+//     res.header('Access-Control-Allow-Origin', '*');
+//     app.use(cors());
+//     next();
+// });
 
 app.use('/files', express.static(uploadConfig.directory));
 app.use(routes);
@@ -37,6 +37,6 @@ app.use((err: Error, request: Request, response: Response, _: NextFunction) => {
     });
 });
 
-app.listen(3333, () => {
+app.listen(80, () => {
     console.log('🚀 Server started on port 3333');
 });

@@ -8,9 +8,15 @@ import AppError from './errors/AppError';
 import './database';
 
 const app = express();
-app.use(cors());
 
 app.use(express.json());
+
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    app.use(cors());
+    next();
+});
+
 app.use('/files', express.static(uploadConfig.directory));
 app.use(routes);
 

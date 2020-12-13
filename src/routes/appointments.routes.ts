@@ -7,12 +7,12 @@ import AppointmentsRepository from '../repositories/AppointmentsRepository';
 import CreateAppointmentService from '../services/CreateAppointmentService';
 import UpdateAppointmentService from '../services/UpdateAppointmentService';
 
-import ensureAuthenticated from '../middlewares/ensureAuthenticated';
+// import ensureAuthenticated from '../middlewares/ensureAuthenticated';
 
 const appointmentsRouter = Router();
 
 // NESSA LINHA ESTOU DIZENDO QUE TODAS AS MINHAS ROTAS PRECISAM DE AUTH (TOKEN)
-appointmentsRouter.use(ensureAuthenticated);
+// appointmentsRouter.use(ensureAuthenticated);
 
 appointmentsRouter.get('/', async (request, response) => {
     const appointmentsRepository = getCustomRepository(AppointmentsRepository);
